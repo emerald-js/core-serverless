@@ -1,0 +1,27 @@
+{
+  "name": "@emerald-js/core-serverless",
+  "main": "index",
+  "version": "0.0.1",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/emerald-js/core-serverless.git"
+  },
+  "bugs": {
+    "url": "https://github.com/emerald-js/core-serverless/issues"
+  },
+  "dependencies": {
+    "@emerald-js/container": ">=0.0.8"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-plugin-transform-es2015-modules-commonjs-optimized": "^6.16.0",
+    "babel-preset-env": "^1.7.0",
+    "coffeescript": "^2.3.1"
+  },
+  "scripts": {
+    "prepare": "bash ./build.sh",
+    "build": "bash ./build.sh",
+    "postpublish": "bash ./clean-up.sh"
+  }
+}

@@ -1,0 +1,8 @@
+*.coffee
+.babelrc
+build.sh
+clean-up.sh
+
+/test
+/.idea
+/.lib
