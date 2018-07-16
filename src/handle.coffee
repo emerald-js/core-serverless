@@ -3,7 +3,7 @@ import Request 			from './request'
 import Response 		from './response'
 import ViewableError 	from './error/viewable-error'
 
-handleError = (error, context, response)->
+handleError = (error, context, response) ->
 
 	if error instanceof ViewableError
 		return {
@@ -19,9 +19,9 @@ handleError = (error, context, response)->
 	else
 		throw error
 
-export default (handle)->
+export default (handle) ->
 
-	return (event, context)->
+	return (event, context) ->
 
 		request 	= new Request event, context
 		response 	= new Response
