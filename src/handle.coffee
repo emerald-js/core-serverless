@@ -1,5 +1,10 @@
 
-handleError = (error, context, response) ->
+import Request 			from './request'
+import Response 		from './response'
+import ViewableError 	from './error/viewable-error'
+
+handleError = (error, context, response)->
+
 	if error instanceof ViewableError
 		return {
 			statusCode: error.status
@@ -7,44 +12,25 @@ handleError = (error, context, response) ->
 				'content-type': 'application/json'
 			}
 			body: JSON.stringify {
-				errors: [
-					{
-						code: 		error.code
-						message: 	error.message
-					}
-				]
+				code: 		error.code
+				message: 	error.message
 			}
 		}
 	else
 		throw error
 
+export default (handle)->
 
-export default (handle) ->
-	return (event, context) ->
+	return (event, context)->
 
-		request.event 	= event
-		request.context = context
-
-		request.headers = event.headers
-		request.params 	= event.pathParameters
-		request.query 	= event.queryParameters
-		request.body 	= event.body
-
-		response = {
-			status: 200
-			body: ''
-			headers: {}
-		}
+		request 	= new Request event, context
+		response 	= new Response
 
 		try
-			handle request, response
+			await handle request, response
 
 		catch error
 			return handleError error, context, response
-
-		if response.json
-			response.body = JSON.stringify response.json
-			response.headers['content-type'] = 'application/json'
 
 		return {
 			headers: 		response.headers
