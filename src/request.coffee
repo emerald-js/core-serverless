@@ -1,7 +1,7 @@
 
 export default class Request
 
-	constructor:(@event, @context)->
+	constructor:(@event, @context) ->
 
 		@method 	= @event.httpMethod
 		@path 		= @event.path
@@ -12,5 +12,5 @@ export default class Request
 
 		Object.freeze @
 
-	json:->
+	json: ->
 		return JSON.parse @body

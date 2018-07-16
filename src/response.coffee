@@ -1,12 +1,12 @@
 
 export default class Response
 
-	constructor:(@status = 200, @body = '', @headers = {})->
+	constructor:(@status = 200, @body = '', @headers = {}) ->
 
-	set:(header, value)->
+	set:(header, value) ->
 		@headers[header] = value
 		return @
 
-	json:(content)->
+	json:(content) ->
 		@body = JSON.stringify content
 		return @
