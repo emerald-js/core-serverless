@@ -10,7 +10,10 @@ export default class Request
 		@query		= @event.queryStringParameters
 		@body		= @event.body
 
-		Object.freeze @
+		# Object.freeze @
 
 	json: ->
-		return JSON.parse @body
+		if !@jsonBody_
+			@jsonBody_ = JSON.parse @body
+
+		return @jsonBody_
