@@ -1,4 +1,6 @@
 
+import ViewableError from './error/viewable-error'
+
 export default class Request
 
 	constructor:(@event, @context) ->
@@ -14,6 +16,10 @@ export default class Request
 
 	json: ->
 		if !@jsonBody_
-			@jsonBody_ = JSON.parse @body
+
+			try
+				@jsonBody_ = JSON.parse @body
+			catch
+				throw new ViewableError 'Malformed JSON in request body'
 
 		return @jsonBody_

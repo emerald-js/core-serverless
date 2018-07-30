@@ -1,7 +1,7 @@
 {
   "name": "@emerald-js/core-serverless",
   "main": "src/index",
-  "version": "0.1.2",
+  "version": "0.1.4",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -11,7 +11,7 @@
     "url": "https://github.com/emerald-js/core-serverless/issues"
   },
   "dependencies": {
-    "@emerald-js/container": ">=0.0.8",
+    "@emerald-js/container": "^0.2.3",
     "extendable-error": "^0.1.5"
   },
   "devDependencies": {
