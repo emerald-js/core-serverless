@@ -1,4 +1,5 @@
 
+import compose 			from './compose'
 import Request 			from './request'
 import Response 		from './response'
 import ViewableError 	from './error/viewable-error'
@@ -42,13 +43,15 @@ handleError = (error, context, response) ->
 
 export default (middlewares...) ->
 
+	fn = compose middlewares
+
 	return (event, context) ->
 
 		request 	= new Request event, context
 		response 	= new Response
 
-		try for handle in middlewares
-			await handle request, response
+		try
+			await fn request, response
 
 		catch error
 			return handleError error, context, response
