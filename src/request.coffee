@@ -5,12 +5,12 @@ export default class Request
 
 	constructor:(@event, @context) ->
 
-		@method 	= @event.httpMethod
-		@path 		= @event.path
-		@headers 	= @event.headers
-		@params		= @event.pathParameters
-		@query		= @event.queryStringParameters
-		@body		= @event.body
+		@method 	= @event.httpMethod 			or ''
+		@path 		= @event.path 					or ''
+		@headers 	= @event.headers 				or {}
+		@params		= @event.pathParameters 		or {}
+		@query		= @event.queryStringParameters 	or {}
+		@body		= @event.body 					or ''
 
 		# Object.freeze @
 
