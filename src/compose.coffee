@@ -3,9 +3,17 @@ export default (middleware) ->
 	if not Array.isArray middleware
 		throw new TypeError 'Middleware stack must be an array!'
 
-	for fn in middleware
-		if typeof fn isnt 'function'
-			throw new TypeError 'Middleware must be composed of functions!'
+	middleware = middleware.map (fn) ->
+		switch typeof fn
+
+			when 'function'
+				return fn
+
+			when 'object'
+				if fn.handle
+					return fn.handle.bind fn
+
+		throw new TypeError 'Middleware must be composed of functions or handle objects!'
 
 	return (request, response, next) ->
 
