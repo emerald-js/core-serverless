@@ -10,7 +10,7 @@ export default (middleware) ->
 				return fn
 
 			when 'object'
-				if fn.handle
+				if typeof fn.handle is 'function'
 					return fn.handle.bind fn
 
 		throw new TypeError 'Middleware must be composed of functions or handle objects!'
