@@ -1,8 +1,8 @@
 
-import compose 			from './compose'
+import ViewableError 	from '../error/viewable-error'
+import compose 			from '../compose'
 import Request 			from './request'
 import Response 		from './response'
-import ViewableError 	from './error/viewable-error'
 
 handleError = (error, context, response) ->
 
@@ -17,7 +17,7 @@ handleError = (error, context, response) ->
 		return {
 			statusCode: 400
 			headers: {
-				'content-type': 'application/json'
+				'Content-Type': 'application/json'
 			}
 			body: JSON.stringify {
 				code: 		'INPUT_VALIDATION_ERROR'
@@ -30,7 +30,7 @@ handleError = (error, context, response) ->
 		return {
 			statusCode: error.status
 			headers: {
-				'content-type': 'application/json'
+				'Content-Type': 'application/json'
 			}
 			body: JSON.stringify {
 				code: 		error.code

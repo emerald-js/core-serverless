@@ -1,3 +1,4 @@
+
 export default (middleware) ->
 
 	if not Array.isArray middleware
