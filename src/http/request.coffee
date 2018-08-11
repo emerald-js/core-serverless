@@ -1,5 +1,5 @@
 
-import ViewableError from './error/viewable-error'
+import ViewableError from '../error/viewable-error'
 
 export default class Request
 
