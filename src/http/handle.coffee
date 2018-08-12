@@ -4,7 +4,7 @@ import compose 			from '../compose'
 import Request 			from './request'
 import Response 		from './response'
 
-handleError = (error, context, response) ->
+handleError = (error, response) ->
 
 	if error.isJoi
 		fields = []
@@ -14,28 +14,19 @@ handleError = (error, context, response) ->
 				key: 		detail.context.key
 			}
 
-		return {
-			statusCode: 400
-			headers: {
-				'Content-Type': 'application/json'
-			}
-			body: JSON.stringify {
-				code: 		'INPUT_VALIDATION_ERROR'
-				message: 	error.details[0].message
-				fields
-			}
+		response.status = 400
+		response.json {
+			code: 		'INPUT_VALIDATION_ERROR'
+			message: 	error.details[0].message
+			fields
 		}
 
 	if error instanceof ViewableError
-		return {
-			statusCode: error.status
-			headers: {
-				'Content-Type': 'application/json'
-			}
-			body: JSON.stringify {
-				code: 		error.code
-				message: 	error.message
-			}
+
+		response.status = error.status
+		response.json {
+			code: 		error.code
+			message: 	error.message
 		}
 
 	else
@@ -54,7 +45,7 @@ export default (middlewares...) ->
 			await fn request, response
 
 		catch error
-			return handleError error, context, response
+			handleError error, response
 
 		return {
 			headers: 		response.headers
