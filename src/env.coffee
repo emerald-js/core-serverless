@@ -43,3 +43,15 @@ export array = (name, defaultValue, sep = ',') ->
 	array = array.map (item) -> item.trim()
 
 	return array
+
+export default {
+	get
+	str
+	string: str
+	int
+	integer: int
+	float
+	bool
+	boolean: bool
+	array
+}
