@@ -1,7 +1,7 @@
 {
   "name": "@emerald-js/core-serverless",
   "main": "src/index",
-  "version": "0.2.0",
+  "version": "0.2.2",
   "license": "MIT",
   "repository": {
     "type": "git",

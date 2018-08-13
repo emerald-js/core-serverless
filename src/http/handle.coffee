@@ -21,7 +21,7 @@ handleError = (error, response) ->
 			fields
 		}
 
-	if error instanceof ViewableError
+	else if error instanceof ViewableError
 
 		response.status = error.status
 		response.json {
