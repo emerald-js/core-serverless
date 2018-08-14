@@ -16,7 +16,7 @@ export default (middleware) ->
 
 		throw new TypeError 'Middleware must be composed of functions or handle objects!'
 
-	return (request, response, next) ->
+	return (params...) ->
 
 		index = -1
 
@@ -34,11 +34,10 @@ export default (middleware) ->
 				return Promise.resolve()
 
 			try
-				return Promise.resolve fn(
-					request
-					response
+				return Promise.resolve fn.apply null, [
+					...params
 					dispatch.bind null, i + 1
-				)
+				]
 
 			catch error
 				return Promise.reject error
