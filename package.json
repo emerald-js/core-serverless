@@ -1,6 +1,6 @@
 {
   "name": "@emerald-js/core-serverless",
-  "main": "src/index",
+  "main": "index",
   "version": "0.4.0",
   "license": "MIT",
   "private": false,
@@ -23,7 +23,7 @@
   "scripts": {
     "prepublish": "bash ./build.sh",
     "postpublish": "yarn cleanup",
-    "cleanup": "rm -f ./src{/**,}/*.js"
+    "cleanup": "rm -f ./{/**,}/*.js; rm -rf http; rm -rf error;"
   },
   "babel": {
     "plugins": [
