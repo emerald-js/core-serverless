@@ -5,23 +5,7 @@ import Request 			from './request'
 import Response 		from './response'
 
 handleError = (error, response) ->
-
-	if error.isJoi
-		fields = []
-		for detail in error.details
-			fields.push {
-				message: 	detail.message
-				key: 		detail.context.key
-			}
-
-		response.status = 400
-		response.json {
-			code: 		'INPUT_VALIDATION_ERROR'
-			message: 	error.details[0].message
-			fields
-		}
-
-	else if error instanceof ViewableError
+	if error instanceof ViewableError or error.viewable
 
 		response.status = error.status
 		response.json {
