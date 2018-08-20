@@ -1,15 +1,15 @@
 {
-  "name": "@emerald-js/core-serverless",
+  "name": "@emerald-js/sls-core",
   "main": "index",
   "version": "0.4.1",
   "license": "MIT",
   "private": false,
   "repository": {
     "type": "git",
-    "url": "https://github.com/emerald-js/core-serverless.git"
+    "url": "https://github.com/emerald-js/sls-core.git"
   },
   "bugs": {
-    "url": "https://github.com/emerald-js/core-serverless/issues"
+    "url": "https://github.com/emerald-js/sls-core/issues"
   },
   "dependencies": {
     "@emerald-js/container": "^0.2.3",
