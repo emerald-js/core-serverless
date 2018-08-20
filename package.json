@@ -1,7 +1,7 @@
 {
   "name": "@emerald-js/sls-core",
   "main": "index",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "license": "MIT",
   "private": false,
   "repository": {
@@ -26,6 +26,16 @@
     "cleanup": "rm -f ./{/**,}/*.js; rm -rf http; rm -rf error;"
   },
   "babel": {
+    "presets": [
+      [
+        "env",
+        {
+          "targets": {
+            "node": "current"
+          }
+        }
+      ]
+    ],
     "plugins": [
       "transform-es2015-modules-commonjs-optimized"
     ]
