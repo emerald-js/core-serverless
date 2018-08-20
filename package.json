@@ -1,7 +1,7 @@
 {
   "name": "@emerald-js/sls-core",
   "main": "index",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "license": "MIT",
   "private": false,
   "repository": {
